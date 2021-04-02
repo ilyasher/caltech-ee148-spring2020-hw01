@@ -142,7 +142,7 @@ file_names = sorted(os.listdir(data_path))
 file_names = [f for f in file_names if '.jpg' in f]
 
 preds = {}
-for file_name in file_names[100:110]:
+for file_name in file_names:
 
     # read image using PIL:
     I = Image.open(os.path.join(data_path, file_name))
@@ -150,7 +150,7 @@ for file_name in file_names[100:110]:
     # convert to numpy array:
     I = np.asarray(I)
 
-    preds[file_name] = detect_red_light(I, visualize=True)
+    preds[file_name] = detect_red_light(I, visualize=False)
 
 # save preds (overwrites any previous predictions!)
 with open(os.path.join(preds_path,'preds.json'),'w') as f:
